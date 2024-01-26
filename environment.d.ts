@@ -8,5 +8,9 @@ declare namespace NodeJS {
 
     readonly GOOGLE_CLIENT_ID: string
     readonly GOOGLE_CLIENT_SECRET: string
+
+    readonly APPLE_ID: string
+    readonly APPLE_TEAM_ID: string
+    readonly APPLE_SECRET: string
   }
 }
