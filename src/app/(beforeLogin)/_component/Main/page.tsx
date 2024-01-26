@@ -14,7 +14,27 @@ export default function Main() {
         <div className={styles.box}>
           <Link href={'/login'}>로그인</Link>
           <Link href={'/signup'}>회원가입</Link>
-          <button onClick={() => signIn()}>Sign In</button>
+          <button
+            onClick={() =>
+              signIn('kakao', { redirect: true, callbackUrl: '/' })
+            }
+          >
+            kakao login
+          </button>
+          <button
+            onClick={() =>
+              signIn('naver', { redirect: true, callbackUrl: '/' })
+            }
+          >
+            naver login
+          </button>
+          <button
+            onClick={() =>
+              signIn('google', { redirect: true, callbackUrl: '/' })
+            }
+          >
+            google login
+          </button>
         </div>
       </div>
     </>
