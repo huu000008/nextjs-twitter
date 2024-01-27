@@ -1,26 +1,54 @@
-'use client'
+'use client';
 
-import React from 'react'
-import styles from './style.module.scss'
-import classNames from 'classnames/bind'
-import { useRouter } from 'next/navigation'
+import styles from './style.module.scss';
+import classNames from 'classnames/bind';
+import { redirect, useRouter } from 'next/navigation';
+import { useFormState } from 'react-dom';
+import signupAction from '../../_lib/signup';
 
 export default function Modal() {
-  const cx = classNames.bind(styles)
-  const route = useRouter()
+  const cx = classNames.bind(styles);
+  const router = useRouter();
 
+  const [state, formAction] = useFormState(signupAction, { message: null });
   const clickBg = () => {
-    route.back()
+    router.back();
+  };
+  function showMessage(message: string | null) {
+    console.log('message', message);
+    if (message === 'no_id') {
+      return '아이디를 입력하세요.';
+    }
+    if (message === 'no_name') {
+      return '닉네임을 입력하세요.';
+    }
+    if (message === 'no_password') {
+      return '비밀번호를 입력하세요.';
+    }
+    if (message === 'no_image') {
+      return '이미지를 업로드하세요.';
+    }
+    if (message === 'user_exists') {
+      return '이미 사용 중인 아이디입니다.';
+    }
+    return '';
   }
 
   return (
     <div className={cx('wrap')} onClick={clickBg}>
-      <form onClick={e => e.stopPropagation()}>
-        <input type="text" placeholder="id" />
-        <input type="password" placeholder="password" />
-        <input type="name" placeholder="name" />
-        <button>회원가입</button>
-      </form>
+      <div className={cx('formWrap')} onClick={e => e.stopPropagation()}>
+        <form action={formAction}>
+          <input type="text" name="id" placeholder="id" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            required
+          />
+          <input type="text" name="name" placeholder="name" required />
+          <button type="submit">회원가입</button>
+        </form>
+      </div>
     </div>
-  )
+  );
 }

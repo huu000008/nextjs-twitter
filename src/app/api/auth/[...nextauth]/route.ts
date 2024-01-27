@@ -1,7 +1,7 @@
-import NextAuth from 'next-auth'
-import NaverProvider from 'next-auth/providers/naver'
-import KakaoProvider from 'next-auth/providers/kakao'
-import GoogleProvider from 'next-auth/providers/google'
+import NextAuth from 'next-auth';
+import NaverProvider from 'next-auth/providers/naver';
+import KakaoProvider from 'next-auth/providers/kakao';
+import GoogleProvider from 'next-auth/providers/google';
 
 const handler = NextAuth({
   providers: [
@@ -18,6 +18,6 @@ const handler = NextAuth({
       clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET!,
     }),
   ],
-})
+});
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };

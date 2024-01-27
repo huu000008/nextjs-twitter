@@ -1,13 +1,12 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { signIn, useSession } from 'next-auth/react'
-import classNames from 'classnames/bind'
-import styles from './style.module.scss'
+import { signIn, useSession } from 'next-auth/react';
+import classNames from 'classnames/bind';
+import styles from './style.module.scss';
 
 export default function SnsLogin() {
-  const { data: session } = useSession()
-  const cx = classNames.bind(styles)
+  const { data: session } = useSession();
+  const cx = classNames.bind(styles);
 
   return (
     <>
@@ -30,5 +29,5 @@ export default function SnsLogin() {
         google login
       </button>
     </>
-  )
+  );
 }
