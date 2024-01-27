@@ -1,0 +1,7 @@
+{
+  "classname": {
+    "prefix": "cx",
+    "body": ["className={cx('$1')}"],
+    "description": "classname"
+  }
+}

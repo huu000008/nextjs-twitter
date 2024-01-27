@@ -1,0 +1,17 @@
+.button {
+  width: 100%;
+  padding: 15rem;
+  border: none;
+  &.kakao {
+    background-color: #fee500;
+    color: #191919;
+  }
+  &.naver {
+    background-color: #03c75a;
+    color: #fff;
+  }
+  &.google {
+    background-color: #fff;
+    color: #000;
+  }
+}

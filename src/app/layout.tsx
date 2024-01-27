@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import AuthSession from './AuthSession'
+import './globals.scss'
+import AuthSession from './_component/AuthSession'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
