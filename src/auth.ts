@@ -1,10 +1,11 @@
-import NextAuth, { AuthOptions } from 'next-auth';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import GoogleProvider from 'next-auth/providers/google';
 import AppleProvider from 'next-auth/providers/apple';
 import { createPrivateKey } from 'crypto';
 import { SignJWT } from 'jose';
+import NextAuth from 'next-auth/next';
+import { AuthOptions } from 'next-auth';
 
 export const authOption: AuthOptions = {
   cookies: {
@@ -44,7 +45,6 @@ export const authOption: AuthOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
 };
 
 export const auth = async (req: any, res: any) => {
