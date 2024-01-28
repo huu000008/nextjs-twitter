@@ -18,9 +18,11 @@ export default function Login() {
     <>
       <div className={cx('wrap')}>
         <form>
-          <input type="text" placeholder="id" />
-          <input type="password" placeholder="password" />
-          <button className={cx('button')}>로그인</button>
+          <input type="text" placeholder="id" required />
+          <input type="password" placeholder="password" required />
+          <button type="submit" className={cx('button')}>
+            로그인
+          </button>
         </form>
         <div>or</div>
         <SnsLogin />
