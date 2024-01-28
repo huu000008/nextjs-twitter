@@ -28,6 +28,12 @@ export default function SnsLogin() {
       >
         google login
       </button>
+      <button
+        className={cx('button', 'google')}
+        onClick={() => signIn('apple', { redirect: true, callbackUrl: '/' })}
+      >
+        apple login
+      </button>
     </>
   );
 }
