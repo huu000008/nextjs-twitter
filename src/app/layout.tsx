@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.scss';
 import AuthSession from './_component/AuthSession';
 import { MSW } from './_component/MSW';
+import RQProvider from './_component/RQProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <MSW />
-        <AuthSession>{children}</AuthSession>
+        <AuthSession>
+          <RQProvider>{children}</RQProvider>
+        </AuthSession>
       </body>
     </html>
   );

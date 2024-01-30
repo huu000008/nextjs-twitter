@@ -4,7 +4,7 @@ import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import Link from 'next/link';
 import styles from './style.module.scss';
 import classNames from 'classnames/bind';
-import SnsLogin from '../_component/SnsLogin/page';
+import SnsLogin from '../_component/SnsLogin';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 

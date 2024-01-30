@@ -4,6 +4,15 @@
   align-items: center;
   gap: 30rem;
   height: 100dvh;
+  .left {
+    width: 300rem;
+  }
+  .right {
+    width: 300rem;
+  }
+  .center {
+    flex: 1;
+  }
 }
 .box {
   display: flex;

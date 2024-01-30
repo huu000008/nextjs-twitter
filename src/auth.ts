@@ -24,23 +24,22 @@ export const {
   },
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials, req) {
-        const user = {
-          id: '1',
-          name: 'J Smith',
-          email: 'jsmith@example.com',
-        };
+      async authorize(credentials) {
+        const authResponse = await fetch('/users/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(credentials),
+        });
 
-        if (user) {
-          return user;
-        } else {
+        if (!authResponse.ok) {
           return null;
         }
+
+        const user = await authResponse.json();
+
+        return user;
       },
     }),
     NaverProvider({
