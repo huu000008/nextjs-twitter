@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "go": "concurrently \"next dev\" \"npx tsx watch ./src/mocks/http.ts\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
