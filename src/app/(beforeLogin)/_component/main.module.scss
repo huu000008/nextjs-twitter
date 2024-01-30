@@ -1,17 +1,21 @@
 .wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 30rem;
-  height: 100dvh;
   .left {
     width: 300rem;
+    nav {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .right {
     width: 300rem;
   }
   .center {
     flex: 1;
+    max-width: 800rem;
+    height: 100%;
   }
 }
 .box {

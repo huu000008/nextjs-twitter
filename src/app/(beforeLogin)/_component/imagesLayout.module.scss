@@ -1,0 +1,28 @@
+.wrap {
+  margin-top: 40rem;
+  border-radius: 20rem;
+  overflow: hidden;
+  .imgInner {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 2rem;
+    height: 400rem;
+    &.img3 {
+      .right {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+    &.img1 {
+      display: flex;
+    }
+  }
+  .img {
+    flex: 1;
+    position: relative;
+    img {
+      object-fit: cover;
+    }
+  }
+}

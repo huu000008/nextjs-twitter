@@ -1,0 +1,17 @@
+.wrap {
+  &:not(:last-child) {
+    border-bottom: 1rem solid #333;
+  }
+  padding: 20rem;
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 20rem;
+  }
+  .content {
+    margin-top: 20rem;
+    &Wrap {
+      padding-left: 55rem;
+    }
+  }
+}

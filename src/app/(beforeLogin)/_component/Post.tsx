@@ -1,23 +1,35 @@
-'use client';
+import { Post } from '@/app/model/Post';
+import React from 'react';
+import classNames from 'classnames/bind';
+import styles from './post.module.scss';
+import Profile from './Profile';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import ImagesLayout from './ImagesLayout';
 
-import Image from 'next/image';
-import { getPosts } from '../_lib/getPosts';
-import { useQuery } from '@tanstack/react-query';
+type Props = {
+  post: Post;
+};
 
-export default function Post() {
-  const { data } = useQuery({
-    queryKey: ['get', 'posts'],
-    queryFn: getPosts,
-  });
-  console.log(data);
+dayjs.locale('ko');
+dayjs.extend(relativeTime);
+
+export default function Post({ post }: Props) {
+  const cx = classNames.bind(styles);
   return (
-    <>
-      {data.map((item: any) => (
-        <div key={item.postId}>
-          <p>{item.content}</p>
-          <Image src={item.imgUrl} alt="img" width={40} height={40} />;
+    <div className={cx('wrap')}>
+      <div key={post.postId}>
+        <div className={cx('top')}>
+          <Profile user={post.user} />
+          <div className={cx('date')}>
+            {dayjs(post.createdAt).fromNow(true)}
+          </div>
         </div>
-      ))}
-    </>
+        <div className={cx('contentWrap')}>
+          <p className={cx('content')}>{post.content}</p>
+          <ImagesLayout images={post.images} />
+        </div>
+      </div>
+    </div>
   );
 }

@@ -10,30 +10,47 @@ function generateDate() {
   });
 }
 const User = [
-  { id: 'USER01', nickname: 'USERNICKNAME01', image: faker.image.avatar() },
-  { id: 'USER02', nickname: 'USERNICKNAME02', image: faker.image.avatar() },
-  { id: 'USER03', nickname: 'USERNICKNAME03', image: faker.image.avatar() },
+  { id: 'USER01', name: 'USERNICKNAME01', image: faker.image.avatar() },
 ];
 const Posts = [
   {
     postId: 1,
-    user: User[0],
-    content: faker.lorem.lines({ min: 1, max: 3 }),
-    imgUrl: faker.image.urlLoremFlickr(),
+    user: { id: 'USER01', name: 'USERNICKNAME01', image: faker.image.avatar() },
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [
+      { id: 1, url: faker.image.urlLoremFlickr() },
+      { id: 2, url: faker.image.urlLoremFlickr() },
+      { id: 2, url: faker.image.urlLoremFlickr() },
+    ],
     createdAt: generateDate(),
   },
   {
     postId: 2,
-    user: User[2],
-    content: faker.lorem.lines({ min: 1, max: 3 }),
-    imgUrl: faker.image.urlLoremFlickr(),
+    user: { id: 'USER02', name: 'USERNICKNAME02', image: faker.image.avatar() },
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [
+      { id: 1, url: faker.image.urlLoremFlickr() },
+      { id: 1, url: faker.image.urlLoremFlickr() },
+    ],
     createdAt: generateDate(),
   },
   {
     postId: 3,
-    user: User[3],
-    content: faker.lorem.lines({ min: 1, max: 3 }),
-    imgUrl: faker.image.urlLoremFlickr(),
+    user: { id: 'USER03', name: 'USERNICKNAME03', image: faker.image.avatar() },
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [
+      { id: 1, url: faker.image.urlLoremFlickr() },
+      { id: 2, url: faker.image.urlLoremFlickr() },
+      { id: 2, url: faker.image.urlLoremFlickr() },
+      { id: 2, url: faker.image.urlLoremFlickr() },
+    ],
+    createdAt: generateDate(),
+  },
+  {
+    postId: 4,
+    user: { id: 'USER04', name: 'USERNICKNAME04', image: faker.image.avatar() },
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [{ id: 1, url: faker.image.urlLoremFlickr() }],
     createdAt: generateDate(),
   },
 ];

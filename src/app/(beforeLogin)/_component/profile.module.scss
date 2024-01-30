@@ -1,0 +1,17 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 15rem;
+  border: none;
+  .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .name {
+    font-size: 18rem;
+    font-weight: 700;
+  }
+}

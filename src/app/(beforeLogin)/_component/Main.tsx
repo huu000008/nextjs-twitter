@@ -1,14 +1,14 @@
 import styles from './main.module.scss';
 import classNames from 'classnames/bind';
-import { signOut } from 'next-auth/react';
 import Link from 'next/link';
-import Post from './Post';
+import Posts from './Posts';
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from '@tanstack/react-query';
 import { getPosts } from '../_lib/getPosts';
+import Logout from './Logout';
 
 export default async function Main() {
   const cx = classNames.bind(styles);
@@ -27,12 +27,12 @@ export default async function Main() {
           <nav>
             <Link href={''}>HOME</Link>
             <Link href={'/login'}>로그인</Link>
-            {/* <button onClick={() => signOut()}>로그아웃</button> */}
+            <Logout />
           </nav>
         </div>
         <div className={cx('center')}>
           <HydrationBoundary state={dehydratedState}>
-            <Post />
+            <Posts />
           </HydrationBoundary>
         </div>
         <div className={cx('right')}></div>

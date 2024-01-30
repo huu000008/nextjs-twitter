@@ -2,8 +2,8 @@ import { User } from './User';
 
 export interface Post {
   postId: number;
-  User: User;
+  user: User;
   content: string;
   createdAt: Date;
-  imgUrl: string;
+  images: [id: string, url: string];
 }
