@@ -7,16 +7,23 @@ import {
   QueryClient,
   dehydrate,
 } from '@tanstack/react-query';
-import { getPosts } from '../_lib/getPosts';
 import Logout from './Logout';
+import Tab from './Tab';
+import TabProvider from './TabProvider';
+import { getPostsForYou } from '../_lib/getPostsForYou';
+import { getPostsFollowing } from '../_lib/getPostsFollowwing';
 
 export default async function Main() {
   const cx = classNames.bind(styles);
 
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ['get', 'posts'],
-    queryFn: getPosts,
+    queryKey: ['posts', 'foryou'],
+    queryFn: getPostsForYou,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ['posts', 'following'],
+    queryFn: getPostsFollowing,
   });
   const dehydratedState = dehydrate(queryClient);
 
@@ -32,7 +39,10 @@ export default async function Main() {
         </div>
         <div className={cx('center')}>
           <HydrationBoundary state={dehydratedState}>
-            <Posts />
+            <TabProvider>
+              <Tab data={['For you', 'Following']} />
+              <Posts />
+            </TabProvider>
           </HydrationBoundary>
         </div>
         <div className={cx('right')}></div>

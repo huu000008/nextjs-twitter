@@ -5,6 +5,7 @@ const nextConfig = {
       'cloudflare-ipfs.com',
       'avatars.githubusercontent.com',
       'loremflickr.com',
+      'picsum.photos',
     ],
   },
 };

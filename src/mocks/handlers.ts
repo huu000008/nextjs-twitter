@@ -10,47 +10,107 @@ function generateDate() {
   });
 }
 const User = [
-  { id: 'USER01', name: 'USERNICKNAME01', image: faker.image.avatar() },
+  { id: 'USER01', name: faker.person.fullName(), image: faker.image.avatar() },
+  { id: 'USER02', name: faker.person.fullName(), image: faker.image.avatar() },
+  { id: 'USER03', name: faker.person.fullName(), image: faker.image.avatar() },
+  { id: 'USER04', name: faker.person.fullName(), image: faker.image.avatar() },
+  { id: 'USER05', name: faker.person.fullName(), image: faker.image.avatar() },
 ];
-const Posts = [
+const ForYou = [
   {
     postId: 1,
-    user: { id: 'USER01', name: 'USERNICKNAME01', image: faker.image.avatar() },
+    user: User[0],
     content: faker.lorem.lines({ min: 1, max: 10 }),
     images: [
-      { id: 1, url: faker.image.urlLoremFlickr() },
-      { id: 2, url: faker.image.urlLoremFlickr() },
-      { id: 2, url: faker.image.urlLoremFlickr() },
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
     ],
     createdAt: generateDate(),
   },
   {
     postId: 2,
-    user: { id: 'USER02', name: 'USERNICKNAME02', image: faker.image.avatar() },
+    user: User[1],
     content: faker.lorem.lines({ min: 1, max: 10 }),
-    images: [
-      { id: 1, url: faker.image.urlLoremFlickr() },
-      { id: 1, url: faker.image.urlLoremFlickr() },
-    ],
+    images: [],
     createdAt: generateDate(),
   },
   {
     postId: 3,
-    user: { id: 'USER03', name: 'USERNICKNAME03', image: faker.image.avatar() },
+    user: User[2],
     content: faker.lorem.lines({ min: 1, max: 10 }),
     images: [
-      { id: 1, url: faker.image.urlLoremFlickr() },
-      { id: 2, url: faker.image.urlLoremFlickr() },
-      { id: 2, url: faker.image.urlLoremFlickr() },
-      { id: 2, url: faker.image.urlLoremFlickr() },
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+      { id: 1, url: faker.image.urlPicsumPhotos() },
     ],
     createdAt: generateDate(),
   },
   {
     postId: 4,
-    user: { id: 'USER04', name: 'USERNICKNAME04', image: faker.image.avatar() },
+    user: User[3],
     content: faker.lorem.lines({ min: 1, max: 10 }),
-    images: [{ id: 1, url: faker.image.urlLoremFlickr() }],
+    images: [
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+    ],
+    createdAt: generateDate(),
+  },
+  {
+    postId: 5,
+    user: User[4],
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [{ id: 1, url: faker.image.urlPicsumPhotos() }],
+    createdAt: generateDate(),
+  },
+];
+const Following = [
+  {
+    postId: 1,
+    user: User[4],
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+    ],
+    createdAt: generateDate(),
+  },
+  {
+    postId: 2,
+    user: User[0],
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [],
+    createdAt: generateDate(),
+  },
+  {
+    postId: 3,
+    user: User[1],
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+    ],
+    createdAt: generateDate(),
+  },
+  {
+    postId: 4,
+    user: User[3],
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [
+      { id: 1, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+      { id: 2, url: faker.image.urlPicsumPhotos() },
+    ],
+    createdAt: generateDate(),
+  },
+  {
+    postId: 5,
+    user: User[2],
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: [{ id: 1, url: faker.image.urlPicsumPhotos() }],
     createdAt: generateDate(),
   },
 ];
@@ -72,7 +132,10 @@ export const handlers = [
       },
     });
   }),
-  http.get('/api/posts', () => {
-    return HttpResponse.json(Posts);
+  http.get('/api/posts/foryou', () => {
+    return HttpResponse.json(ForYou);
+  }),
+  http.get('/api/posts/following', () => {
+    return HttpResponse.json(Following);
   }),
 ];

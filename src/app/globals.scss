@@ -111,7 +111,11 @@ input {
   height: 40rem;
   padding: 0 15rem;
 }
-
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

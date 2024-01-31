@@ -5,5 +5,5 @@ export interface Post {
   user: User;
   content: string;
   createdAt: Date;
-  images: [id: string, url: string];
+  images: [id: string, url: string | undefined];
 }

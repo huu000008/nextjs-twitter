@@ -6,12 +6,27 @@
   .top {
     display: flex;
     align-items: center;
-    gap: 20rem;
+    .date {
+      margin-left: 10rem;
+      color: #666;
+    }
   }
   .content {
     margin-top: 20rem;
     &Wrap {
       padding-left: 55rem;
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10rem;
+    padding-left: 55rem;
+    button {
+      padding: 10rem;
+      svg {
+        width: 20rem;
+      }
     }
   }
 }

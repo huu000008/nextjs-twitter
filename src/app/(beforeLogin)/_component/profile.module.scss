@@ -1,7 +1,6 @@
 .wrap {
   display: flex;
   align-items: center;
-  gap: 15rem;
   border: none;
   .img {
     display: flex;
@@ -11,7 +10,12 @@
     overflow: hidden;
   }
   .name {
+    margin-left: 15rem;
     font-size: 18rem;
     font-weight: 700;
+  }
+  .id {
+    margin-left: 10rem;
+    color: #666;
   }
 }

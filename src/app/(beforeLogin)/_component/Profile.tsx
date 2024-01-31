@@ -15,7 +15,8 @@ export default function Profile({ user }: Props) {
       <div className={cx('img')}>
         <Image src={user.image} alt="img" width={40} height={40} />
       </div>
-      <p className={cx('name')}>{user.name}</p>
+      <p className={cx('name')}>{user?.name}</p>
+      <p className={cx('id')}>@{user?.id}</p>
     </div>
   );
 }
