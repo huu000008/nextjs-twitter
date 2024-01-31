@@ -1,0 +1,29 @@
+.wrap {
+  position: relative;
+  padding: 15rem 20rem;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #222;
+  }
+  .country {
+    color: #777;
+  }
+  .hash {
+    margin: 4rem 0;
+    font-weight: 700;
+  }
+  .count {
+    color: #777;
+  }
+  button {
+    padding: 5rem;
+    position: absolute;
+    top: 15rem;
+    right: 20rem;
+    svg {
+      path {
+        fill: #777;
+      }
+    }
+  }
+}

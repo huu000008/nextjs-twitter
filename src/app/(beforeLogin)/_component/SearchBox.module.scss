@@ -1,0 +1,17 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  padding: 0 20rem;
+  background-color: #222;
+  border-radius: 20rem;
+  input {
+    background: none;
+    border: none;
+  }
+  svg {
+    width: 20px;
+    path {
+      fill: #777;
+    }
+  }
+}

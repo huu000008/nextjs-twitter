@@ -7,10 +7,39 @@
     nav {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      gap: 10rem;
+      font-size: 20rem;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10rem;
+        padding: 10rem 20rem;
+        border-radius: 20rem;
+        transition: all 0.3s;
+        color: #bbb;
+        &:hover {
+          background-color: #222;
+        }
+        svg {
+          width: 25px;
+          path {
+            fill: #bbb;
+          }
+        }
+      }
     }
   }
   .right {
     width: 300rem;
+    padding-top: 5rem;
+    .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 10rem;
+      position: sticky;
+      top: 5rem;
+    }
   }
   .center {
     flex: 1;

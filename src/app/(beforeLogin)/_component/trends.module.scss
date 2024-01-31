@@ -1,0 +1,24 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(22, 24, 28);
+  border-radius: 20rem;
+  color: #bbb;
+  overflow: hidden;
+  .title {
+    padding: 10rem 20rem;
+    font-size: 20rem;
+    font-weight: 700;
+  }
+  .moreButton {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20rem;
+    color: rgb(29, 155, 240);
+    transition: all 0.3s;
+    &:hover {
+      background-color: #222;
+    }
+  }
+}

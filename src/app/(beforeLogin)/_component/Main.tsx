@@ -12,6 +12,9 @@ import Tab from './Tab';
 import TabProvider from './TabProvider';
 import { getPostsForYou } from '../_lib/getPostsForYou';
 import { getPostsFollowing } from '../_lib/getPostsFollowwing';
+import Trands from './Trands';
+import SearchBox from './SearchBox';
+import Menu from './Menu';
 
 export default async function Main() {
   const cx = classNames.bind(styles);
@@ -31,11 +34,7 @@ export default async function Main() {
     <>
       <div className={cx('wrap')}>
         <div className={cx('left')}>
-          <nav>
-            <Link href={''}>HOME</Link>
-            <Link href={'/login'}>로그인</Link>
-            <Logout />
-          </nav>
+          <Menu />
         </div>
         <div className={cx('center')}>
           <HydrationBoundary state={dehydratedState}>
@@ -45,7 +44,12 @@ export default async function Main() {
             </TabProvider>
           </HydrationBoundary>
         </div>
-        <div className={cx('right')}></div>
+        <div className={cx('right')}>
+          <div className={cx('inner')}>
+            <SearchBox />
+            <Trands />
+          </div>
+        </div>
       </div>
     </>
   );
