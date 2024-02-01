@@ -5,6 +5,7 @@ export async function getPostsForYou() {
       next: {
         tags: ['posts', 'foryou'],
       },
+      cache: 'no-store',
     }
   );
 

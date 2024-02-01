@@ -42,7 +42,6 @@ export default async function Page() {
           <HydrationBoundary state={dehydratedState}>
             <TabProvider>
               <Tab data={['For you', 'Following']} />
-              {/* TODO 로딩구현 필요 */}
               <Suspense fallback={<Loading />}>
                 <Posts />
               </Suspense>

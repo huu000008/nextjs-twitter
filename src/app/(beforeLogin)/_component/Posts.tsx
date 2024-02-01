@@ -24,19 +24,22 @@ export default function Posts() {
 
   const tacContext = useContext(TabContext);
 
-  const [activeData, setActiveData] = useState([]);
-  useEffect(() => {
-    if (tacContext.activeTab === 0) {
-      setActiveData(forYouData);
-    } else if (tacContext.activeTab === 1) {
-      setActiveData(followingData);
-    }
-  }, [tacContext.activeTab, forYouData, followingData]);
+  // useEffect(() => {
+  //   if (tacContext.activeTab === 0) {
+  //     setActiveData(forYouData);
+  //   } else if (tacContext.activeTab === 1) {
+  //     setActiveData(followingData);
+  //   }
+  // }, [tacContext.activeTab, forYouData, followingData]);
   return (
     <div className={cx('wrap')}>
-      {activeData?.map((item: IPost) => (
-        <Post post={item} key={item.postId} />
-      ))}
+      {tacContext.activeTab === 0
+        ? forYouData.map((item: IPost) => (
+            <Post post={item} key={item.postId} />
+          ))
+        : followingData.map((item: IPost) => (
+            <Post post={item} key={item.postId} />
+          ))}
     </div>
   );
 }
