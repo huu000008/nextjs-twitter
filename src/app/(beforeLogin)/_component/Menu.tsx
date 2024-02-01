@@ -131,7 +131,9 @@ export default function Menu({}: Props) {
         </svg>
         More
       </Link>
-      <Link href={'/signup'}>회원가입</Link>
+      <Link href={'/signup'} scroll={false}>
+        회원가입
+      </Link>
       <button type="button">Post</button>
       <Logout />
     </nav>
