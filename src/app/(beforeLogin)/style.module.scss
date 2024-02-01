@@ -4,6 +4,10 @@
   gap: 30rem;
   .left {
     width: 300rem;
+    .inner {
+      position: sticky;
+      top: 0;
+    }
     nav {
       display: flex;
       flex-direction: column;

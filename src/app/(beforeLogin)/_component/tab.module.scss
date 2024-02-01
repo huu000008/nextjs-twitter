@@ -1,6 +1,9 @@
 .wrap {
   display: flex;
   gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   border-bottom: 1rem solid #333;
   background-color: #333;
   .item {
@@ -9,8 +12,10 @@
     justify-content: center;
     flex: 1;
     position: relative;
-    height: 40rem;
+    height: 50rem;
     background-color: #000;
+    font-size: 16rem;
+    color: #666;
     &::after {
       content: '';
       position: absolute;
@@ -20,11 +25,13 @@
       width: 50rem;
       height: 3rem;
       border-radius: 10rem;
-      background-color: #fff;
+      background-color: rgb(29, 155, 240);
       transition: all 0.3s;
       opacity: 0;
     }
     &.active {
+      color: #fff;
+      font-weight: 700;
       &::after {
         opacity: 1;
       }
