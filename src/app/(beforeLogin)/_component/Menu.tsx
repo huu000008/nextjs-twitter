@@ -135,6 +135,10 @@ export default function Menu({}: Props) {
         회원가입
       </Link>
       <button type="button">Post</button>
+
+      <Link href={'/login'} scroll={false}>
+        로그인
+      </Link>
       <Logout />
     </nav>
   );
