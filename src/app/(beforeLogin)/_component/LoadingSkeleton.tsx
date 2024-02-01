@@ -6,7 +6,7 @@ export default function LoadingSkeleton() {
   const cx = classNames.bind(styles);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div className={cx('wrap')}>
       <svg
         className={cx('loader')}
         height="100%"
