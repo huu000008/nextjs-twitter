@@ -1,5 +1,5 @@
-import Login from '../login/page';
+import ModalSignup from '../@modal/(.)signup/page';
 
 export default function Page() {
-  return <Login />;
+  return <ModalSignup />;
 }

@@ -5,8 +5,9 @@ import classNames from 'classnames/bind';
 import { redirect, useRouter } from 'next/navigation';
 import { useFormState } from 'react-dom';
 import signupAction from '../../_lib/signup';
+import { motion } from 'framer-motion';
 
-export default function Modal() {
+export default function ModalSignup() {
   const cx = classNames.bind(styles);
   const router = useRouter();
 
@@ -36,7 +37,14 @@ export default function Modal() {
 
   return (
     <div className={cx('wrap')} onClick={clickBg}>
-      <div className={cx('formWrap')} onClick={e => e.stopPropagation()}>
+      <motion.div
+        initial={{ marginBottom: -20, opacity: 0 }}
+        animate={{ marginBottom: 0, opacity: 1 }}
+        exit={{ marginBottom: -20, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className={cx('formWrap')}
+        onClick={e => e.stopPropagation()}
+      >
         <form action={formAction}>
           <input type="text" name="id" placeholder="id" required />
           <input
@@ -48,7 +56,7 @@ export default function Modal() {
           <input type="text" name="name" placeholder="name" required />
           <button type="submit">회원가입</button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }
