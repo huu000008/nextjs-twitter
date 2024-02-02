@@ -20,9 +20,10 @@ export default async function Page() {
   const cx = classNames.bind(styles);
 
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ['posts', 'foryou'],
     queryFn: getPostsForYou,
+    initialPageParam: 0,
   });
   await queryClient.prefetchQuery({
     queryKey: ['posts', 'following'],

@@ -1,6 +1,7 @@
-export async function getPostsForYou() {
+type Props = { pageParam?: number };
+export async function getPostsForYou({ pageParam }: Props) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/foryou`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/foryou?cursor=${pageParam}`,
     {
       next: {
         tags: ['posts', 'foryou'],

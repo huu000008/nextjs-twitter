@@ -27,7 +27,7 @@ export default function Post({ post }: Props) {
         </div>
         <div className={cx('contentWrap')}>
           <p className={cx('content')}>{post.content}</p>
-          {post.images.length > 0 && <ImagesLayout images={post.images} />}
+          {post.images?.length > 0 && <ImagesLayout images={post.images} />}
         </div>
         <div className={cx('bottom')}>
           <button type="button">
