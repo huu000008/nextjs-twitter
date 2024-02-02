@@ -33,7 +33,7 @@ export default function Posts() {
     queryFn: getPostsForYou,
     initialPageParam: 0,
     getNextPageParam: lastPage => lastPage.at(-1)?.postId,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
+    staleTime: 60 * 1000,
     gcTime: 300 * 1000,
   });
 
@@ -46,14 +46,12 @@ export default function Posts() {
 
   const { ref, inView } = useInView({
     threshold: 0,
-    delay: 200,
+    delay: 500,
+    onChange: (inView, entry) => {
+      if (inView && !isFetching && hasNextPage) fetchNextPage();
+    },
   });
 
-  useEffect(() => {
-    if (inView) {
-      !isFetching && hasNextPage && fetchNextPage();
-    }
-  }, [inView, isFetching, hasNextPage, fetchNextPage]);
   return (
     <div className={cx('wrap')}>
       {tacContext.activeTab === 0
@@ -69,7 +67,9 @@ export default function Posts() {
               <Post post={item} key={item.postId} />
             </Fragment>
           ))}
-      <div ref={ref} style={{ height: 0 }} />
+      <div ref={ref} style={{ height: 50 }}>
+        {inView ? 'ㅁ' : 'ㅠ'}
+      </div>
     </div>
   );
 }

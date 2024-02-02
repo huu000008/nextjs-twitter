@@ -116,7 +116,7 @@ export const handlers = [
         postId: cursor + 5,
         user: User[4],
         content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: [{ id: 1, url: faker.image.urlPicsumPhotos() }],
+        images: randomImages(),
         createdAt: generateDate(),
       },
     ]);
