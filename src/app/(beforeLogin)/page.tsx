@@ -25,9 +25,10 @@ export default async function Page() {
     queryFn: getPostsForYou,
     initialPageParam: 0,
   });
-  await queryClient.prefetchQuery({
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ['posts', 'following'],
     queryFn: getPostsFollowing,
+    initialPageParam: 0,
   });
   const dehydratedState = dehydrate(queryClient);
 
