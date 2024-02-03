@@ -15,27 +15,8 @@ import { Fragment, useContext, useEffect, useState } from 'react';
 import { TabContext } from './TabProvider';
 import { useInView } from 'react-intersection-observer';
 
-export default function Posts() {
+export default function PostsFollowing() {
   const cx = classNames.bind(styles);
-  const {
-    data: forYouData,
-    fetchNextPage: forYouFetchNextPage,
-    hasNextPage: forYouHasNextPage,
-    isFetching: forYouIsFetching,
-  } = useInfiniteQuery<
-    IPost[],
-    Object,
-    InfiniteData<IPost[]>,
-    [_1: string, _2: string],
-    number
-  >({
-    queryKey: ['posts', 'foryou'],
-    queryFn: getPostsForYou,
-    initialPageParam: 0,
-    getNextPageParam: lastPage => lastPage.at(-1)?.postId,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
 
   const {
     data: followingData,
@@ -63,34 +44,20 @@ export default function Posts() {
     threshold: 0,
     delay: 500,
     onChange: (inView, entry) => {
-      if (tacContext.activeTab === 0) {
-        if (inView && !forYouIsFetching && forYouHasNextPage)
-          forYouFetchNextPage();
-      }
-      if (tacContext.activeTab === 1) {
-        if (inView && !followingIsFetching && followingHasNextPage)
-          followingFetchNextPage();
-      }
+      if (inView && !followingIsFetching && followingHasNextPage)
+        followingFetchNextPage();
     },
   });
 
   return (
     <div className={cx('wrap')}>
-      {tacContext.activeTab === 0
-        ? forYouData?.pages.map((item: any, index: number) => (
-            <Fragment key={index}>
-              {item.map((post: IPost) => (
-                <Post post={post} key={post.postId} />
-              ))}
-            </Fragment>
-          ))
-        : followingData?.pages.map((item: any, index: number) => (
-            <Fragment key={index}>
-              {item.map((post: IPost) => (
-                <Post post={post} key={post.postId} />
-              ))}
-            </Fragment>
+      {followingData?.pages.map((item: any, index: number) => (
+        <Fragment key={index}>
+          {item.map((post: IPost) => (
+            <Post post={post} key={post.postId} />
           ))}
+        </Fragment>
+      ))}
       <div ref={ref} style={{ height: 50 }} />
     </div>
   );

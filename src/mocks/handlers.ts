@@ -11,7 +11,7 @@ function generateDate() {
 }
 
 const randomImages = () => {
-  const numImages = Math.floor(Math.random() * 5); // 0에서 4까지의 랜덤한 숫자 생성
+  const numImages = Math.floor(Math.random() * 5);
   const images = [];
   for (let i = 0; i < numImages; i++) {
     images.push({ id: i + 1, url: faker.image.urlPicsumPhotos() });
@@ -19,12 +19,21 @@ const randomImages = () => {
   return images;
 };
 
+const randomUsers = () => {
+  const user = {
+    id: faker.lorem.word(),
+    name: faker.person.fullName(),
+    image: faker.image.avatar(),
+  };
+  return user;
+};
+
 const User = [
-  { id: 'USER01', name: faker.person.fullName(), image: faker.image.avatar() },
-  { id: 'USER02', name: faker.person.fullName(), image: faker.image.avatar() },
-  { id: 'USER03', name: faker.person.fullName(), image: faker.image.avatar() },
-  { id: 'USER04', name: faker.person.fullName(), image: faker.image.avatar() },
-  { id: 'USER05', name: faker.person.fullName(), image: faker.image.avatar() },
+  {
+    id: faker.lorem.word(),
+    name: faker.person.fullName(),
+    image: faker.image.avatar(),
+  },
 ];
 
 export const handlers = [
@@ -49,35 +58,35 @@ export const handlers = [
     return HttpResponse.json([
       {
         postId: cursor + 1,
-        user: User[0],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 2,
-        user: User[1],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 3,
-        user: User[2],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 4,
-        user: User[3],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 5,
-        user: User[4],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
@@ -90,35 +99,35 @@ export const handlers = [
     return HttpResponse.json([
       {
         postId: cursor + 1,
-        user: User[0],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 2,
-        user: User[1],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 3,
-        user: User[2],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 4,
-        user: User[3],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),
       },
       {
         postId: cursor + 5,
-        user: User[4],
+        user: randomUsers(),
         content: faker.lorem.lines({ min: 1, max: 10 }),
         images: randomImages(),
         createdAt: generateDate(),

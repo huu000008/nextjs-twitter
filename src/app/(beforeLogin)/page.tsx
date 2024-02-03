@@ -6,15 +6,17 @@ import {
   dehydrate,
 } from '@tanstack/react-query';
 import Menu from './_component/Menu';
-import TabProvider from './_component/TabProvider';
+import TabProvider, { TabContext } from './_component/TabProvider';
 import Tab from './_component/Tab';
 import SearchBox from './_component/SearchBox';
 import Posts from './_component/Posts';
 import Trends from './_component/Trends';
 import { getPostsForYou } from './_lib/getPostsForYou';
 import { getPostsFollowing } from './_lib/getPostsFollowwing';
-import { Suspense } from 'react';
+import { Suspense, useContext } from 'react';
 import Loading from './loading';
+import PostsFollowing from './_component/PostsFollowing';
+import PostsForYou from './_component/PostsForYou';
 
 export default async function Page() {
   const cx = classNames.bind(styles);
