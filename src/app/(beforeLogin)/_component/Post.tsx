@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import ImagesLayout from './ImagesLayout';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   post: IPost;
@@ -17,8 +18,14 @@ dayjs.extend(relativeTime);
 
 export default function Post({ post }: Props) {
   const cx = classNames.bind(styles);
+
+  const router = useRouter();
+  const moveDetail = () => {
+    router.push(`/${post.user.id}/${post.postId}`);
+  };
+
   return (
-    <Link href={`/${post.user.id}/${post.postId}`} className={cx('wrap')}>
+    <div onClick={moveDetail} className={cx('wrap')}>
       <div className={cx('top')}>
         <Profile user={post.user} />
         <div className={cx('date')}>{dayjs(post.createdAt).fromNow(true)}</div>
@@ -89,6 +96,6 @@ export default function Post({ post }: Props) {
           </svg>
         </button>
       </div>
-    </Link>
+    </div>
   );
 }

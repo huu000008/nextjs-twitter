@@ -50,7 +50,7 @@
     flex-direction: column;
     flex: 1;
     max-width: 800rem;
-    height: 100%;
+    min-height: 100dvh;
     border-right: 1rem solid #333;
     border-left: 1rem solid #333;
   }

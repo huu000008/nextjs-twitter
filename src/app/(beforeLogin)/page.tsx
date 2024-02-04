@@ -12,7 +12,6 @@ import { getPostsForYou } from './_lib/getPostsForYou';
 import { getPostsFollowing } from './_lib/getPostsFollowwing';
 import { Suspense } from 'react';
 import Loading from './loading';
-import { getPost } from './_lib/getPost';
 
 export default async function Page() {
   const cx = classNames.bind(styles);
@@ -27,10 +26,6 @@ export default async function Page() {
     queryKey: ['posts', 'following'],
     queryFn: getPostsFollowing,
     initialPageParam: 0,
-  });
-  await queryClient.prefetchQuery({
-    queryKey: ['post', 'single'],
-    queryFn: getPost,
   });
   const dehydratedState = dehydrate(queryClient);
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Post as IPost } from '@/app/model/Post';
 import { getPost } from '@/app/(beforeLogin)/_lib/getPost';
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function PostSingle({ id }: Props) {
-  const { data, error } = useQuery<
+  const { data, error } = useSuspenseQuery<
     IPost,
     Object,
     IPost,
@@ -21,5 +21,5 @@ export default function PostSingle({ id }: Props) {
     queryFn: getPost,
   });
 
-  return <div>{data && <Post post={data} />}</div>;
+  return <div>{<Post post={data} />}</div>;
 }
