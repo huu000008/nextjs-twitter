@@ -1,4 +1,19 @@
 .wrap {
-  position: absolute;
+  position: fixed;
   inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .left {
+    flex: 1;
+  }
+  .right {
+    width: 360rem;
+    height: 100dvh;
+    background-color: #000;
+  }
 }

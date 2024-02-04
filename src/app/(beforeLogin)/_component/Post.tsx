@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import ImagesLayout from './ImagesLayout';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Props = {
   post: IPost;
@@ -20,8 +20,10 @@ export default function Post({ post }: Props) {
   const cx = classNames.bind(styles);
 
   const router = useRouter();
+  const pathname = usePathname();
+
   const moveDetail = () => {
-    router.push(`/${post.user.id}/${post.postId}`);
+    if (pathname === '/') router.push(`/${post.user.id}/${post.postId}`);
   };
 
   return (

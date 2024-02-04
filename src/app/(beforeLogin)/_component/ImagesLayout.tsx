@@ -2,19 +2,27 @@ import Image from 'next/image';
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './imagesLayout.module.scss';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function ImagesLayout({ post }: any) {
   const cx = classNames.bind(styles);
+
+  const router = useRouter();
+  const openModal = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/${post.user.id}/${post.postId}/1`);
+  };
+
   return (
     <div className={cx('wrap')}>
       {post?.images.length === 3 ? (
         <div className={cx('imgInner', 'img3')}>
-          <Link href={'/'} className={cx('img')}>
+          <div className={cx('img')} onClick={openModal}>
             <Image src={post.images[0].url} alt="" fill sizes="100%" priority />
-          </Link>
+          </div>
           <div className={cx('right')}>
-            <Link href={'/'} className={cx('img')}>
+            <div className={cx('img')} onClick={openModal}>
               <Image
                 src={post.images[1].url}
                 alt=""
@@ -22,8 +30,8 @@ export default function ImagesLayout({ post }: any) {
                 sizes="100%"
                 priority
               />
-            </Link>
-            <Link href={'/'} className={cx('img')}>
+            </div>
+            <div className={cx('img')} onClick={openModal}>
               <Image
                 src={post.images[2].url}
                 alt=""
@@ -31,7 +39,7 @@ export default function ImagesLayout({ post }: any) {
                 sizes="100%"
                 priority
               />
-            </Link>
+            </div>
           </div>
         </div>
       ) : (
@@ -41,9 +49,9 @@ export default function ImagesLayout({ post }: any) {
               className={cx('imgInner', post?.images.length === 1 && 'img1')}
             >
               {post?.images.map((image: any, index: number) => (
-                <Link href={'/'} key={index} className={cx('img')}>
+                <div key={index} className={cx('img')} onClick={openModal}>
                   <Image src={image.url} alt="" fill sizes="100%" priority />
-                </Link>
+                </div>
               ))}
             </div>
           )}
