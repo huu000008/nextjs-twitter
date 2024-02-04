@@ -11,7 +11,7 @@ export default function ImagesLayout({ post }: any) {
   const openModal = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
-    router.push(`/${post.user.id}/${post.postId}/1`);
+    router.push(`/${post.user.id}/${post.postId}/1`, { scroll: false });
   };
 
   return (

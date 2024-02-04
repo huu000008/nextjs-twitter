@@ -9,23 +9,24 @@ type props = {
 };
 export default function Layout({ children, modal }: props) {
   const cx = classNames.bind(styles);
+
   return (
-    <div className={cx('wrap')}>
-      <div className={cx('left')}>
-        <div className={cx('inner')}>
-          <Menu />
+    <>
+      <div className={cx('wrap')}>
+        <div className={cx('left')}>
+          <div className={cx('inner')}>
+            <Menu />
+          </div>
+        </div>
+        <div className={cx('center')}>{children}</div>
+        <div className={cx('right')}>
+          <div className={cx('inner')}>
+            <SearchBox />
+            <Trends />
+          </div>
         </div>
       </div>
-      <div className={cx('center')}>
-        {children}
-        {modal}
-      </div>
-      <div className={cx('right')}>
-        <div className={cx('inner')}>
-          <SearchBox />
-          <Trends />
-        </div>
-      </div>
-    </div>
+      {modal}
+    </>
   );
 }
