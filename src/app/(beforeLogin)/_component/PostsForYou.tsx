@@ -6,7 +6,7 @@ import { Post as IPost } from '@/app/model/Post';
 import Post from './Post';
 import classNames from 'classnames/bind';
 import styles from './posts.module.scss';
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export default function PostsForYou() {

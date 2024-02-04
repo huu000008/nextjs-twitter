@@ -28,6 +28,32 @@ const randomUsers = () => {
   return user;
 };
 
+const posts = (cursor: number) => {
+  const posts = [];
+  for (let i = 0; i < 5; i++) {
+    posts.push({
+      postId: cursor + i,
+      user: randomUsers(),
+      content: faker.lorem.lines({ min: 1, max: 10 }),
+      images: randomImages(),
+      createdAt: generateDate(),
+    });
+  }
+  return posts;
+};
+
+const post = (params: any) => {
+  const post = {
+    postId: params.id,
+    user: randomUsers(),
+    content: faker.lorem.lines({ min: 1, max: 10 }),
+    images: randomImages(),
+    createdAt: generateDate(),
+  };
+
+  return post;
+};
+
 const User = [
   {
     id: faker.lorem.word(),
@@ -55,83 +81,15 @@ export const handlers = [
   http.get('/api/posts/foryou', ({ request }) => {
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
-    return HttpResponse.json([
-      {
-        postId: cursor + 1,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 2,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 3,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 4,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 5,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-    ]);
+    return HttpResponse.json(posts(cursor));
   }),
   http.get('/api/posts/following', ({ request }) => {
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
-    return HttpResponse.json([
-      {
-        postId: cursor + 1,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 2,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 3,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 4,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-      {
-        postId: cursor + 5,
-        user: randomUsers(),
-        content: faker.lorem.lines({ min: 1, max: 10 }),
-        images: randomImages(),
-        createdAt: generateDate(),
-      },
-    ]);
+    return HttpResponse.json(posts(cursor));
+  }),
+  http.get('/api/post/:id', ({ request, params }) => {
+    const postId = params;
+    return HttpResponse.json(post(postId));
   }),
 ];

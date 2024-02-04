@@ -5,18 +5,14 @@ import {
   QueryClient,
   dehydrate,
 } from '@tanstack/react-query';
-import Menu from './_component/Menu';
-import TabProvider, { TabContext } from './_component/TabProvider';
+import TabProvider from './_component/TabProvider';
 import Tab from './_component/Tab';
-import SearchBox from './_component/SearchBox';
 import Posts from './_component/Posts';
-import Trends from './_component/Trends';
 import { getPostsForYou } from './_lib/getPostsForYou';
 import { getPostsFollowing } from './_lib/getPostsFollowwing';
-import { Suspense, useContext } from 'react';
+import { Suspense } from 'react';
 import Loading from './loading';
-import PostsFollowing from './_component/PostsFollowing';
-import PostsForYou from './_component/PostsForYou';
+import { getPost } from './_lib/getPost';
 
 export default async function Page() {
   const cx = classNames.bind(styles);
@@ -32,33 +28,22 @@ export default async function Page() {
     queryFn: getPostsFollowing,
     initialPageParam: 0,
   });
+  await queryClient.prefetchQuery({
+    queryKey: ['post', 'single'],
+    queryFn: getPost,
+  });
   const dehydratedState = dehydrate(queryClient);
 
   return (
     <>
-      <div className={cx('wrap')}>
-        <div className={cx('left')}>
-          <div className={cx('inner')}>
-            <Menu />
-          </div>
-        </div>
-        <div className={cx('center')}>
-          <HydrationBoundary state={dehydratedState}>
-            <TabProvider>
-              <Tab data={['For you', 'Following']} />
-              <Suspense fallback={<Loading />}>
-                <Posts />
-              </Suspense>
-            </TabProvider>
-          </HydrationBoundary>
-        </div>
-        <div className={cx('right')}>
-          <div className={cx('inner')}>
-            <SearchBox />
-            <Trends />
-          </div>
-        </div>
-      </div>
+      <HydrationBoundary state={dehydratedState}>
+        <TabProvider>
+          <Tab data={['For you', 'Following']} />
+          <Suspense fallback={<Loading />}>
+            <Posts />
+          </Suspense>
+        </TabProvider>
+      </HydrationBoundary>
     </>
   );
 }
